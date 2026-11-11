@@ -5,6 +5,7 @@
 // データ: lunakotsukimiya/luna-widgets リポジトリの muse-usage.json
 
 const DATA_URL = "https://raw.githubusercontent.com/lunakotsukimiya/luna-widgets/main/muse-usage.json";
+const AVATAR_IMG_URL = "https://github.com/lunakotsukimiya.png?size=240";
 const AVATAR_B64_URL = "https://raw.githubusercontent.com/lunakotsukimiya/luna-widgets/main/assets/luna-avatar.b64.txt";
 
 const C = {
@@ -21,11 +22,19 @@ async function fetchJSON(url) {
 }
 
 async function fetchAvatar() {
+  // まずGitHubプロフィール画像をそのまま読み込む
+  try {
+    const req = new Request(AVATAR_IMG_URL);
+    req.timeoutInterval = 10;
+    const img = await req.loadImage();
+    if (img) return img;
+  } catch (e) {}
+  // ダメならbase64テキストから復元する
   try {
     const req = new Request(AVATAR_B64_URL);
     req.timeoutInterval = 10;
     const b64 = await req.loadString();
-    const data = Data.fromBase64String(b64.trim());
+    const data = Data.fromBase64String(b64.replace(/\s+/g, ""));
     return data ? Image.fromData(data) : null;
   } catch (e) {
     return null;
