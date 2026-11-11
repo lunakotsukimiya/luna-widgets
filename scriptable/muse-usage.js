@@ -4,7 +4,7 @@
 // 🌙 Muse 使用量ウィジェット（ルナ子バージョン）
 // データ: lunakotsukimiya/luna-widgets リポジトリの muse-usage.json
 
-const DATA_URL = "https://raw.githubusercontent.com/lunakotsukimiya/luna-widgets/main/muse-usage.json";
+const DATA_URL = "https://gist.githubusercontent.com/lunakotsukimiya/de317d31861097640b3cf99efc206e42/raw/muse-usage.json";
 const AVATAR_IMG_URL = "https://github.com/lunakotsukimiya.png?size=240";
 const AVATAR_B64_URL = "https://raw.githubusercontent.com/lunakotsukimiya/luna-widgets/main/assets/luna-avatar.b64.txt";
 
